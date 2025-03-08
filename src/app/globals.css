@@ -1,8 +1,30 @@
 @import "tailwindcss";
 
+
 @theme {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+}
+
+@font-face {
+  font-family: "inconsolata-bold";
+  src: url("/public/fonts/inconsolata/Inconsolata-Bold.ttf") format("truetype");
+  font-weight: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "inconsolata-regular";
+  src: url("/public/fonts/inconsolata/Inconsolata-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "inconsolata-semiBold";
+  src: url("/public/fonts/inconsolata/Inconsolata-SemiBold.ttf") format("truetype");
+  font-weight: normal;
+  font-display: swap;
 }
 
 :root {

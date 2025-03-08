@@ -7,7 +7,7 @@ export function PageRegister () {
             <img src="/logo-full.svg" alt="Logo" className=""/>
         </header>
         <div>
-            <h1 className="pt-[20px] pl-[50px] pr-[50px] text-[60px] w-[1000px] text-center">Your Journey to Coding Conf 2025 Starts Here!</h1>
+            <h1 className="pt-[20px] pl-[50px] pr-[50px] text-[60px] w-[946px] text-center font-inconsolata">Your Journey to Coding Conf 2025 Starts Here!</h1>
         </div>
        </div>
     )
