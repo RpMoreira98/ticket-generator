@@ -4,9 +4,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        inconsolata: ["Inconsolata-regular", "sans-serif"],
-        inconsolataBold: ["Inconsolata-bold", "sans-serif"],
-        inconsolataSemiBold: ["Inconsolata-semiBold", "sans-serif"],
+        inconsolata: ["Inconsolata", "monospace"]
       },
     },
   },
