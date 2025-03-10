@@ -21,7 +21,7 @@ export function PageRegister () {
             }}
             reader.readAsDataURL(file)
         } else {
-            alert("Apenas arquivos JPEG, JPG e PNG!!")
+            alert("Apenas arquivos JPG e PNG!!")
             setImage(null)
         }
         event.target.value = "";
@@ -61,19 +61,22 @@ export function PageRegister () {
                 </div>
                 <div className="flex flex-col mt-5">
                     <label htmlFor="full-name" className="text-[20px] text-white">Email Address</label>
-                    <input type="text" name="name" className="block outline-none mt-[10px] ml-0 mb-[10px] mr-0 pt-[15px] pr-0 pb-[15px] pl-[10px] border border-solid border-[#8784a4] rounded-md text-[#d2d1d6] text-[15px] bg-[#4b486a4c] focus:border-[#ffffff] focus:ring-2 focus:ring-[#8784a4]"/>
+                    <input type="text" name="email" className="block outline-none mt-[10px] ml-0 mb-[10px] mr-0 pt-[15px] pr-0 pb-[15px] pl-[10px] border border-solid border-[#8784a4] rounded-md text-[#d2d1d6] text-[15px] bg-[#4b486a4c] focus:border-[#ffffff] focus:ring-2 focus:ring-[#8784a4]"/>
                     <span className="flex gap-1">
                     <img src="/icon-info.svg" alt="" className=""/>
                         Shouldn't be empty.
                         </span>
                 </div>
                 <div className="flex flex-col mt-5">
-                    <label htmlFor="full-name" className="text-[20px] text-white">Github Username</label>
-                    <input type="text" name="name" className="outline-none mt-[10px] ml-0 mb-[10px] mr-0 pt-[15px] pr-0 pb-[15px] pl-[10px] border border-solid border-[#8784a4] rounded-md text-[#d2d1d6] text-[15px] bg-[#4b486a4c] focus:border-[#ffffff] focus:ring-2 focus:ring-[#8784a4]"/>
+                    <label htmlFor="user-name" className="text-[20px] text-white">Github Username</label>
+                    <input type="text" name="name" placeholder="@yourusername" className="outline-none mt-[10px] ml-0 mb-[10px] mr-0 pt-[15px] pr-0 pb-[15px] pl-[10px] border border-solid border-[#8784a4] rounded-md text-[#d2d1d6] text-[15px] bg-[#4b486a4c] focus:border-[#ffffff] focus:ring-2 focus:ring-[#8784a4]"/>
                     <span className="flex gap-1">
                     <img src="/icon-info.svg" alt="" className=""/>
                         Shouldn't be empty.
                         </span>
+                </div>
+                <div className="mt-5 mb-5 flex justify-center bg-[#f57261] p-3 rounded-md">
+                    <button className="cursor-pointer text-[#0c082b] font-extrabold text-[20px]">Generete my ticket</button>
                 </div>
             </form>
         </div>
