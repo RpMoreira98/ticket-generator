@@ -3,6 +3,43 @@
 import { useRef, useState } from "react"
 
 export function PageRegister () {
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "", 
+        username: "",
+    })
+
+
+    const [errors, setErrors] = useState({
+        name: false,
+        email: false,
+        username: false
+    })
+
+    const handleChange = (e: { target: { name: any; value: any } }) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        })
+
+        setErrors({
+            ...errors,
+            [e.target.name]: false
+        })
+    }
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+
+        const newErrors = {
+            name: formData.name.trim() === "",
+            email: formData.email.trim() === "",
+            username: formData.username.trim() === "",
+          };
+      
+          setErrors(newErrors);
+    }
+
     const [image, setImage] = useState<string | null>(null)
     const fileInputRef = useRef<HTMLInputElement | null>(null)
     const handleClickRef = () => {
@@ -64,7 +101,7 @@ export function PageRegister () {
                     <input type="text" name="email" className="block outline-none mt-[10px] ml-0 mb-[10px] mr-0 pt-[15px] pr-0 pb-[15px] pl-[10px] border border-solid border-[#8784a4] rounded-md text-[#d2d1d6] text-[15px] bg-[#4b486a4c] focus:border-[#ffffff] focus:ring-2 focus:ring-[#8784a4]"/>
                     <span className="flex gap-1">
                     <img src="/icon-info.svg" alt="" className=""/>
-                        Shouldn't be empty.
+                    please enter a valid email address.
                         </span>
                 </div>
                 <div className="flex flex-col mt-5">
@@ -75,7 +112,7 @@ export function PageRegister () {
                         Shouldn't be empty.
                         </span>
                 </div>
-                <div className="mt-5 mb-5 flex justify-center bg-[#f57261] p-3 rounded-md">
+                <div className="mt-5 mb-10 flex justify-center bg-[#f57261] p-3 rounded-md">
                     <button className="cursor-pointer text-[#0c082b] font-extrabold text-[20px]">Generete my ticket</button>
                 </div>
             </form>
