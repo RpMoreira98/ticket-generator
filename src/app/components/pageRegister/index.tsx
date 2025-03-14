@@ -13,6 +13,7 @@ export function PageRegister() {
     name: false,
     email: false,
     username: false,
+    image: false,
   });
 
   const handleChange = (e: { target: { name: any; value: any } }) => {
@@ -34,10 +35,16 @@ export function PageRegister() {
       name: formData.name.trim() === '',
       email: formData.email.trim() === '',
       username: formData.username.trim() === '',
+      image: !image,
     };
 
     setErrors(newErrors);
-    if (!newErrors.name && !newErrors.email && !newErrors.username) {
+    if (
+      !newErrors.name &&
+      !newErrors.email &&
+      !newErrors.username &&
+      !newErrors.image
+    ) {
       alert('Formulário enviado com sucesso');
     }
   };
@@ -72,7 +79,7 @@ export function PageRegister() {
         <img src="/logo-full.svg" alt="Logo" className="" />
       </header>
       <div>
-        <h1 className="pt-[20px] pl-[50px] pr-[50px] text-[60px] w-[946px] text-center font-inconsolata font-bold">
+        <h1 className="pt-[20px] pl-[50px] pr-[50px] text-[60px] w-[946px] text-center font-inconsolata font-bold text-[#d2d0d6]">
           Your Journey to Coding Conf 2025 Starts Here!
         </h1>
         <p className="pt-[50px] w-[100%] m-auto text-[22px] text-center text-[#d2d0d6]">
@@ -114,10 +121,12 @@ export function PageRegister() {
               Drag and drop or click to upload
             </p>
           </div>
-          <span className="flex text-[12px] items-center gap-2 text-[#8784a4]">
-            <img src="/icon-info.svg" alt="" className="" />
-            Upload your photo (JPG or PNG, max size: 500KB).
-          </span>
+          {errors.image && (
+            <span className="flex text-[12px] items-center gap-2 text-[#f57261]">
+              <img src="/icon-info.svg" alt="" className="" />
+              Upload your photo (JPG or PNG, max size: 500KB).
+            </span>
+          )}
           <div className="flex flex-col justify-center mt-5">
             <label htmlFor="full-name" className="text-[20px] text-white">
               Full Name
