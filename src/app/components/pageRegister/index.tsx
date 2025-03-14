@@ -38,6 +38,9 @@ export function PageRegister () {
           };
       
           setErrors(newErrors);
+
+          if (!newErrors.name && !newErrors.email && !newErrors.username) {
+            alert("Formulário enviado com sucesso!")} 
     }
 
     const [image, setImage] = useState<string | null>(null)
@@ -71,7 +74,7 @@ export function PageRegister () {
         <div>
             <h1 className="pt-[20px] pl-[50px] pr-[50px] text-[60px] w-[946px] text-center font-inconsolata font-bold" >Your Journey to Coding Conf 2025 Starts Here!</h1>
             <p className="pt-[50px] w-[100%] m-auto text-[22px] text-center text-[#d2d0d6]">Secure your spot at next year's biggest coding conference.</p>
-            <form action="" className="flex flex-col w-[60%] mt-[40px] mr-auto ml-auto mb-0">
+            <form action="" onSubmit={handleSubmit} className="flex flex-col w-[60%] mt-[40px] mr-auto ml-auto mb-0">
                 <label htmlFor="" className="w-[100%] m-auto">Upload Avatar</label>
                 <div onClick={handleClickRef} className="flex flex-col justify-center items-center mb-[15px] mt-[10px] mr-0 ml-0 p-[20px] h-[140px] border-2 border-dashed border-[#4b486a] rounded-[6px] relative bg-[#4b486a4d] cursor-pointer">
                     <input accept="image/jpg, image/png" ref={fileInputRef} onChange={handleFileInput} type="file" className="hidden"/>
@@ -113,7 +116,7 @@ export function PageRegister () {
                         </span>
                 </div>
                 <div className="mt-5 mb-10 flex justify-center bg-[#f57261] p-3 rounded-md">
-                    <button className="cursor-pointer text-[#0c082b] font-extrabold text-[20px]">Generete my ticket</button>
+                    <button type="submit" className="cursor-pointer text-[#0c082b] font-extrabold text-[20px]">Generete my ticket</button>
                 </div>
             </form>
         </div>
