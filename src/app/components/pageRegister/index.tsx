@@ -1,12 +1,14 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useRouter } from 'next/router';
+import { useEffect, useRef, useState } from 'react';
 
 export function PageRegister() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     username: '',
+    image: '',
   });
 
   const [errors, setErrors] = useState({
@@ -15,6 +17,14 @@ export function PageRegister() {
     username: false,
     image: false,
   });
+
+  const [mounted, setMounted] = useState(false);
+  const rounter = useRouter();
+
+  useEffect(() => {
+    setMounted(true);
+  }),
+    [];
 
   const handleChange = (e: { target: { name: any; value: any } }) => {
     setFormData({
@@ -45,7 +55,17 @@ export function PageRegister() {
       !newErrors.username &&
       !newErrors.image
     ) {
-      alert('Formulário enviado com sucesso');
+      if (mounted) {
+        rounter.push({
+          pathname: '/PageConfirmation',
+          query: {
+            name: formData.name,
+            email: formData.email,
+            username: formData.username,
+            image: formData.image,
+          },
+        });
+      }
     }
   };
 
