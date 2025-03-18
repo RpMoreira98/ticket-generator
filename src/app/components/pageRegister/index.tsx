@@ -1,6 +1,6 @@
 'use client';
 
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 
 export function PageRegister() {
@@ -19,7 +19,7 @@ export function PageRegister() {
   });
 
   const [mounted, setMounted] = useState(false);
-  const rounter = useRouter();
+  const { push } = useRouter();
 
   useEffect(() => {
     setMounted(true);
@@ -55,16 +55,17 @@ export function PageRegister() {
       !newErrors.username &&
       !newErrors.image
     ) {
+      console.log('Estou aqui');
+
       if (mounted) {
-        rounter.push({
-          pathname: '/ageConfirmation',
-          query: {
-            name: formData.name,
-            email: formData.email,
-            username: formData.username,
-            image: formData.image,
-          },
-        });
+        const queryString = new URLSearchParams({
+          name: formData.name,
+          email: formData.email,
+          username: formData.username,
+          image: formData.image,
+        }).toString();
+
+        push(`/pageconfirmation?${queryString}`);
       }
     }
   };
@@ -203,7 +204,10 @@ export function PageRegister() {
             )}
           </div>
           <div className="mt-5 mb-10 flex justify-center bg-[#f57261] p-3 rounded-md">
-            <button className="cursor-pointer text-[#0c082b] font-extrabold text-[20px]">
+            <button
+              type="submit"
+              className="cursor-pointer text-[#0c082b] font-extrabold text-[20px]"
+            >
               Generete my ticket
             </button>
           </div>
