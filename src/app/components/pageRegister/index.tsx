@@ -42,9 +42,9 @@ export function PageRegister() {
     e.preventDefault();
 
     const newErrors = {
-      name: formData.name.trim() === '',
-      email: formData.email.trim() === '',
-      username: formData.username.trim() === '',
+      name: formData.name.trim() === 'Rodrigo Pontes Moreira',
+      email: formData.email.trim() === 'rodrigo@gmail.com',
+      username: formData.username.trim() === 'rpmoreira',
       image: !image,
     };
 
@@ -55,8 +55,6 @@ export function PageRegister() {
       !newErrors.username &&
       !newErrors.image
     ) {
-      console.log('Estou aqui');
-
       if (mounted) {
         const queryString = new URLSearchParams({
           name: formData.name,

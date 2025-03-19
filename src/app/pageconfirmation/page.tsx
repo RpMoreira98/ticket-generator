@@ -9,7 +9,7 @@ export default function () {
   const name = searchParaments.get('name');
   const email = searchParaments.get('email');
   const username = searchParaments.get('username');
-  const image = searchParaments.get('image');
+  const image = searchParaments.get('image') || undefined;
 
   return (
     <Layout>
@@ -31,7 +31,31 @@ export default function () {
             updates in the run up to the event.
           </p>
         </section>
-        <article className="bg-[url('/background-desktop.png')] bg-no-repeat bg-center bg-cover w-full h-[500px]"></article>
+        <div className="flex justify-center mt-[60px] ml-auto mr-auto mb-[100px]">
+          <article className="bg-[url('/pattern-ticket.svg')] bg-no-repeat bg-center bg-cover w-[600px] h-[280px] p-[20px]">
+            <div className="flex flex-col content-between">
+              <img src="logo-full.svg" alt="" className="w-[260px]" />
+              <p className="pl-[60px]">
+                {' '}
+                <span>19 de março</span> / Juazeiro do Norte
+              </p>
+            </div>
+            <div className="flex items-center mt-[120px] ml-0 mr-20 mb-20px">
+              <img
+                src={image}
+                alt=""
+                className="w-[70px] rounded-[10px] mr-[12px]"
+              />
+              <div>
+                <h2>{name}</h2>
+                <h3 className="flex items-center">
+                  <img src="icon-github.svg" alt="" />
+                  {username}
+                </h3>
+              </div>
+            </div>
+          </article>
+        </div>
       </div>
     </Layout>
   );
