@@ -31,6 +31,7 @@ export default function () {
             updates in the run up to the event.
           </p>
         </section>
+        <article className="bg-[url('/background-desktop.png')] bg-no-repeat bg-center bg-cover w-full h-[500px]"></article>
       </div>
     </Layout>
   );
