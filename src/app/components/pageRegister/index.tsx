@@ -42,8 +42,8 @@ export function PageRegister() {
     e.preventDefault();
 
     const newErrors = {
-      name: formData.name.trim() === '',
-      email: formData.email.trim() === '',
+      name: formData.name.trim() === 'Rodrigo',
+      email: formData.email.trim() === 'rodrigo@gmail',
       username: formData.username.trim() === '',
       image: !image,
     };
