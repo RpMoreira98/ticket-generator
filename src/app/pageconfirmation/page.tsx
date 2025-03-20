@@ -5,30 +5,25 @@ import Layout from '../components/layout-page';
 import { useEffect, useState } from 'react';
 
 export default function PageConfirmation() {
-  const searchParams = useSearchParams();
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [username, setUsername] = useState('');
+  const searchParaments = useSearchParams();
+
+  const name = searchParaments.get('name');
+  const email = searchParaments.get('email');
+  const username = searchParaments.get('username');
+  const image = localStorage.getItem('userImage') || undefined;
+
   const [formatDate, setFormatDate] = useState('');
-  const [image, setImage] = useState<string | undefined>(undefined); // Explicitamente definido como string | undefined
 
   useEffect(() => {
-    setName(searchParams.get('name') || '');
-    setEmail(searchParams.get('email') || '');
-    setUsername(searchParams.get('username') || '');
-
-    // Verifique se o localStorage retorna um valor ou null
-    const storedImage = localStorage.getItem('userImage');
-    setImage(storedImage || undefined); // Garante que a imagem seja do tipo string ou undefined
-
     const today = new Date();
     const day = today.getDate();
     let month = today.toLocaleString('pt-BR', { month: 'short' });
     month = month.charAt(0).toUpperCase() + month.slice(1);
     const year = today.getFullYear();
 
-    setFormatDate(`${month} ${day}, ${year}`);
-  }, [searchParams]);
+    const date = `${month} ${day}, ${year}`;
+    setFormatDate(date);
+  }, []);
 
   return (
     <Layout>
