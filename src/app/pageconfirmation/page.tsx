@@ -17,9 +17,11 @@ export default function PageConfirmation() {
   useEffect(() => {
     const today = new Date();
     const day = today.getDate();
-    const month = today.getUTCFullYear();
+    let month = today.toLocaleString('pt-BR', { month: 'short' });
+    month = month.charAt(0).toUpperCase() + month.slice(1);
+    const year = today.getFullYear();
 
-    const date = `${day} de ${month}`;
+    const date = `${month} ${day}, ${year}`;
     setFormatDate(date);
   }, []);
 
