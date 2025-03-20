@@ -2,14 +2,26 @@
 
 import { useSearchParams } from 'next/navigation';
 import Layout from '../components/layout-page';
+import { useEffect, useState } from 'react';
 
-export default function () {
+export default function PageConfirmation() {
   const searchParaments = useSearchParams();
 
   const name = searchParaments.get('name');
   const email = searchParaments.get('email');
   const username = searchParaments.get('username');
-  const image = searchParaments.get('image') || undefined;
+  const image = localStorage.getItem('userImage') || undefined;
+
+  const [formatDate, setFormatDate] = useState('');
+
+  useEffect(() => {
+    const today = new Date();
+    const day = today.getDate();
+    const month = today.getUTCFullYear();
+
+    const date = `${day} de ${month}`;
+    setFormatDate(date);
+  }, []);
 
   return (
     <Layout>
@@ -31,23 +43,23 @@ export default function () {
             updates in the run up to the event.
           </p>
         </section>
-        <div className="flex justify-center mt-[60px] ml-auto mr-auto mb-[100px]">
-          <article className="bg-[url('/pattern-ticket.svg')] bg-no-repeat bg-center bg-cover w-[600px] h-[280px] p-[20px]">
+        <div className="flex justify-center mt-[60px] ml-auto mr-auto">
+          <article className="bg-[url('/pattern-ticket.svg')] mb-[50px] bg-no-repeat bg-center bg-cover w-[600px] h-[280px] p-[20px]">
             <div className="flex flex-col content-between">
               <img src="logo-full.svg" alt="" className="w-[260px]" />
               <p className="pl-[60px]">
                 {' '}
-                <span>19 de março</span> / Juazeiro do Norte
+                <span>{formatDate}</span> / Juazeiro do Norte
               </p>
             </div>
-            <div className="flex items-center mt-[120px] ml-0 mr-20 mb-20px">
+            <div className="flex items-center mt-[100px] ml-0 mr-[20px] pb-[20px]">
               <img
                 src={image}
                 alt=""
-                className="w-[70px] rounded-[10px] mr-[12px]"
+                className="w-[70px] h-[70px] object-cover rounded-[10px] mr-[12px]"
               />
               <div>
-                <h2>{name}</h2>
+                <h2 className="text-[30px] text-[#ffffff]">{name}</h2>
                 <h3 className="flex items-center">
                   <img src="icon-github.svg" alt="" />
                   {username}

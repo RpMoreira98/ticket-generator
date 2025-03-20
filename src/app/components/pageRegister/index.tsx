@@ -42,9 +42,9 @@ export function PageRegister() {
     e.preventDefault();
 
     const newErrors = {
-      name: formData.name.trim() === 'Rodrigo Pontes Moreira',
-      email: formData.email.trim() === 'rodrigo@gmail.com',
-      username: formData.username.trim() === 'rpmoreira',
+      name: formData.name.trim() === '',
+      email: formData.email.trim() === '',
+      username: formData.username.trim() === '',
       image: !image,
     };
 
@@ -83,6 +83,7 @@ export function PageRegister() {
         const result = e.target?.result;
         if (typeof result === 'string') {
           setImage(result);
+          localStorage.setItem('userImage', result);
         }
       };
       reader.readAsDataURL(file);
@@ -92,6 +93,7 @@ export function PageRegister() {
     }
     event.target.value = '';
   };
+
   return (
     <div>
       <header className="p-[40px] flex justify-center items-center">
