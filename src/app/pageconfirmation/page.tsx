@@ -1,16 +1,11 @@
 'use client';
 
-import { useSearchParams } from 'next/navigation';
+import { useUserStore } from '@/store/useStore';
 import Layout from '../components/layout-page';
 import { useEffect, useState } from 'react';
 
 export default function PageConfirmation() {
-  const searchParaments = useSearchParams();
-
-  const name = searchParaments.get('name');
-  const email = searchParaments.get('email');
-  const username = searchParaments.get('username');
-  const image = localStorage.getItem('userImage') || undefined;
+  const { name, email, username, image } = useUserStore();
 
   const [formatDate, setFormatDate] = useState('');
 
@@ -55,11 +50,13 @@ export default function PageConfirmation() {
               </p>
             </div>
             <div className="flex items-center mt-[100px] ml-0 mr-[20px] pb-[20px]">
-              <img
-                src={image}
-                alt=""
-                className="w-[70px] h-[70px] object-cover rounded-[10px] mr-[12px]"
-              />
+              {image && (
+                <img
+                  src={image}
+                  alt=""
+                  className="w-[70px] h-[70px] object-cover rounded-[10px] mr-[12px]"
+                />
+              )}
               <div>
                 <h2 className="text-[30px] text-[#ffffff]">{name}</h2>
                 <h3 className="flex items-center">
